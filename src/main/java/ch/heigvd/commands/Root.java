@@ -7,6 +7,10 @@ import picocli.CommandLine;
 	version = "1.0.0",
 	subcommands = {
 		Add.class,
+        Delete.class,
+        Clear.class,
+        Doing.class,
+        Done.class,
 	},
 	scope = CommandLine.ScopeType.INHERIT,
 	mixinStandardHelpOptions = true)
