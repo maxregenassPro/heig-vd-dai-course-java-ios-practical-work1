@@ -22,38 +22,73 @@ List of commands:
 ### Add
 Create a new task. When a task is created, an id is automatically attribute
 
-``todo add <task name>``
+``java -jar target/java-ios-1.0-SNAPSHOT.jar add <task name>``
 
 Options:
 
 - -d, --due=\<date> (Set a due date for the task (e.g. 2025-01-31))
 - -p, --priority=\<priority> (set priority: LOW, MEDIUM, HIGH)
 
+Example:
+```bash
+$ java -jar target/java-ios-1.0-SNAPSHOT.jar add Complete documentation --due 2025-10-10 --priority MEDIUM
+Created task with id 2.
+2 | Complete documentation | 2025-10-08 | 2025-10-10 | MEDIUM | TODO
+```
+
 ### Doing
 Change status of a task on doing
 
-``todo doing <task id>``
+``java -jar target/java-ios-1.0-SNAPSHOT.jar doing <task id>``
+
+Example:
+```bash
+$ java -jar target/java-ios-1.0-SNAPSHOT.jar doing 2
+Changed status from task with id 2 to DOING.
+2 | Complete documentation | 2025-10-08 | 2025-10-10 | MEDIUM | DOING
+```
 
 ### Done
 Change status of a task on done 
 
-``todo done <task id>``
+``java -jar target/java-ios-1.0-SNAPSHOT.jar done <task id>``
+
+Example:
+```bash
+$ java -jar target/java-ios-1.0-SNAPSHOT.jar done 2
+Changed status from task with id 2 to DONE.
+2 | Complete documentation | 2025-10-08 | 2025-10-10 | MEDIUM | DONE
+```
 
 ### Clear
 Delete all task with status done
 
-``todo clear``
+``java -jar target/java-ios-1.0-SNAPSHOT.jar clear``
+
+Example:
+```bash
+$ java -jar target/java-ios-1.0-SNAPSHOT.jar clear
+Cleared 1 completed task(s):
+2 | Complete documentation | 2025-10-08 | 2025-10-10 | MEDIUM | DONE
+```
 
 ### Delete
 Delete task with specified id
 
-``todo delete <task id>``
+``java -jar target/java-ios-1.0-SNAPSHOT.jar delete <task id>``
+
+Example:
+```bash
+$ java -jar target/java-ios-1.0-SNAPSHOT.jar delete 2
+Deleted task 2 successfully.
+2 | Complete documentation | 2025-10-08 | 2025-10-10 | MEDIUM | DONE
+```
 
 
 ### List
 Show all task
 
-``todo list``
+``java -jar target/java-ios-1.0-SNAPSHOT.jar list``
 
 Options:
 
@@ -64,6 +99,23 @@ Options:
 - -s, --sorter=\<sorter> (ID, DESCRIPTION, CREATEDAT, DUEDATE, PRIORITY, STATUS)
 - -v, --filter-value=\<filterValue> (Value to filter by)
 - V, --version (print version information)
+
+Example:
+```bash
+# list all tasks
+$ java -jar target/java-ios-1.0-SNAPSHOT.jar list
+1 | Finish POC             | 2025-10-07 | 2025-10-08 | MEDIUM | DONE
+2 | Complete documentation | 2025-10-08 | 2025-10-10 | MEDIUM | DOING
+3 | Review code            | 2025-10-08 | 2025-10-09 | HIGH   | DONE
+4 | Find name for project  | 2025-10-08 |            | LOW    | DOING
+```
+
+```bash
+# with filters and sorting
+$ java -jar target/java-ios-1.0-SNAPSHOT.jar list -s DUEDATE -f STATUS -v DONE -d DESC
+3 | Review code | 2025-10-08 | 2025-10-09 | HIGH   | DONE
+1 | Finish POC  | 2025-10-07 | 2025-10-08 | MEDIUM | DONE
+```
 
 ### Authors
 
