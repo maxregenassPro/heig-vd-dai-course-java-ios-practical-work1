@@ -19,10 +19,15 @@ public class Done implements Callable<Integer> {
     @Override
     public Integer call() {
         TaskService service = new TaskService(parent.getGlobalFlag());
-        service.updateStatus(id, Task.Status.DONE);
-        //TODO check si tout a bien fonctionné
+        Task done = service.updateStatus(id, Task.Status.DONE);
 
-        System.out.println("Task " + id + " has been change status");
+		if (done == null) {
+			System.out.println("No task found with id " + id + ".");
+			return 1;
+		} else {
+			System.out.println("Changed status from task with id " + id + " to DONE.");
+			System.out.println(done.toString());
+		}
 
         return 0;
     }

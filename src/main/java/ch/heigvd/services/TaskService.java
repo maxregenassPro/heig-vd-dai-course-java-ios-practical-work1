@@ -180,35 +180,50 @@ public class TaskService {
 		return getTasks(null, null, null, null);
 	}
 
-	public void addTask(Task task) {
+	public Task addTask(Task task) {
 		List<Task> tasks = loadTasks();
 		int newId = tasks.isEmpty() ? 1 : tasks.stream().mapToInt(Task::getId).max().orElse(0) + 1;
 		task.setId(newId);
 		task.setCreatedAt(LocalDate.now());
 		task.setStatus(Status.TODO);
-		System.out.println(task.toString());
 		tasks.add(task);
 		saveTasks(tasks);
+		return task;
 	}
 
-	public void updateStatus(int taskId, Task.Status status) {
+	public Task updateStatus(int taskId, Task.Status status) {
 		List<Task> tasks = loadTasks();
-		tasks.stream()
+		Task updatedTask = tasks.stream()
 			.filter(t -> t.getId() == taskId)
 			.findFirst()
-			.ifPresent(t -> t.setStatus(status));
-		saveTasks(tasks);
+			.orElse(null);
+		if (updatedTask != null) {
+			updatedTask.setStatus(status);
+			saveTasks(tasks);
+		}
+		return updatedTask;
 	}
 
-	public void deleteTask(int taskId) {
+	public Task deleteTask(int taskId) {
 		List<Task> tasks = loadTasks();
-		tasks.removeIf(t -> t.getId() == taskId);
-		saveTasks(tasks);
+		Task deletedTask = tasks.stream()
+			.filter(t -> t.getId() == taskId)
+			.findFirst()
+			.orElse(null);
+		if (deletedTask != null) {
+			tasks.removeIf(t -> t.getId() == taskId);
+			saveTasks(tasks);
+		}
+		return deletedTask;
 	}
 
-	public void clearCompleted() {
+	public List<Task> clearCompleted() {
 		List<Task> tasks = loadTasks();
+		List<Task> clearedTasks = tasks.stream()
+			.filter(t -> t.getStatus() == Task.Status.DONE)
+			.collect(Collectors.toList());
 		tasks.removeIf(t -> t.getStatus() == Task.Status.DONE);
 		saveTasks(tasks);
+		return clearedTasks;
 	}
 }
