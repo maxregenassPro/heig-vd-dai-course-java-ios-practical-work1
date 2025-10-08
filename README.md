@@ -61,6 +61,7 @@ Options:
 - -v, --filter-value=\<filterValue> (Value to filter by)
 - V, --version (print version information)
 
+### Authors
 
-
-
+- [Maxime Regenass](https://github.com/maxregenassPro)
+- [Santiago Sugranes](https://github.com/santettebtw)
