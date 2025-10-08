@@ -18,10 +18,16 @@ public class Doing implements Callable<Integer>  {
     @Override
     public Integer call() {
         TaskService service = new TaskService(parent.getGlobalFlag());
-        service.updateStatus(id, Task.Status.DOING);
-        //TODO check si tout a bien fonctionné
+        Task doing = service.updateStatus(id, Task.Status.DOING);
 
-        System.out.println("Task " + id + " has been successfully changed status.");
+		if (doing == null) {
+			System.out.println("No task found with id " + id + ".");
+			return 1;
+		}
+
+		System.out.println("Changed status from task with id " + id + " to DOING.");
+		System.out.println(doing.toString());
+
         return 0;
     }
 }

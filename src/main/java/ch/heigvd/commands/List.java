@@ -55,6 +55,12 @@ public class List implements Callable<Integer> {
 
 		TaskService ts = new TaskService(parent.getGlobalFlag());
 		java.util.List<Task> tasks = ts.getTasks(sorter, sortDir, filter, filterValue);
+
+		if (tasks.isEmpty()) {
+			System.out.println("No tasks found.");
+			// we may want to return 1 here, but I think it's more usable this way
+		}
+
 		System.out.print(ts.formattedTasksString(tasks));
 
 		return 0;

@@ -32,7 +32,7 @@ public class Task {
 	public void setStatus(Status status) { m_status = status; }
 
 	public String toString() {
-		return String.join("|", 
+		return String.join(" | ", 
 			Integer.toString(m_id), m_description, 
 			m_createdAt == null ? "" : m_createdAt.toString(),
 			m_dueDate == null ? "" : m_dueDate.toString(),

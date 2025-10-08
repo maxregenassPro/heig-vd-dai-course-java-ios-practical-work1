@@ -1,6 +1,8 @@
 package ch.heigvd.commands;
 
 import java.util.concurrent.Callable;
+
+import ch.heigvd.models.Task;
 import ch.heigvd.services.TaskService;
 import picocli.CommandLine;
 
@@ -16,9 +18,16 @@ public class Delete implements Callable<Integer> {
     @Override
     public Integer call() {
         TaskService service = new TaskService(parent.getGlobalFlag());
-        service.deleteTask(id);
-        //TODO check si tout a bien fonctionné
+        Task deleted = service.deleteTask(id);
 
-        return 0;
-    }
+		if (deleted == null) {
+			System.out.println("No task found with id " + id + ".");
+			return 1;
+		}
+
+		System.out.println("Deleted task " + id + " successfully.");
+		System.out.println(deleted.toString());
+
+		return 0;
+	}
 }

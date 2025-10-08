@@ -34,7 +34,9 @@ public class Add implements Callable<Integer> {
         task.setPriority(priority);
 
         TaskService service = new TaskService(parent.getGlobalFlag());
-        service.addTask(task);
+        Task created = service.addTask(task);
+		System.out.println("Created task with id " + created.getId() + ".");
+		System.out.println(created.toString());
 		return 0;
 	}
 }
