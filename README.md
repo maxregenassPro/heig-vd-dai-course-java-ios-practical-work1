@@ -3,6 +3,10 @@
 ## Todo list
 The application stores the task list in a text file. This file is fully readable by all users.
 
+### Example file
+
+You can find an example file on the root of this directory (`.todo.tlst`)
+
 ### Commands
 
 List of commands:
