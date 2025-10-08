@@ -1,6 +1,7 @@
 package ch.heigvd.ios.text;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 
 /**
  * A class that writes text files. This implementation write the file byte per byte. It manages the
@@ -8,11 +9,11 @@ import java.io.*;
  */
 public class TextFileWriter {
 
-    public void write(String filename, String tache) {
-        try (FileWriter writer = new FileWriter(filename, true))
+    public void write(String filename, String taches) {
+        try (FileWriter writer = new FileWriter(filename, StandardCharsets.UTF_8))
         {
             BufferedWriter bw = new BufferedWriter(writer);
-            bw.write("\n" + tache);
+            bw.write("\n" + taches);
 
             bw.flush();
             bw.close();
