@@ -1,5 +1,6 @@
 package ch.heigvd.ios.text;
 
+import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -12,12 +13,13 @@ public class TextFileReader {
     public void read(String filename) {
         try{
             FileReader reader = new FileReader(filename);
+            BufferedReader br = new BufferedReader(reader);
 
             int c;
-            while ((c = reader.read()) != -1) {
+            while ((c = br.read()) != -1) {
                 System.out.print((char)c);
             }
-            reader.close();
+            br.close();
         }catch(IOException e){
             System.out.println("Erreur de lecture" + e.getMessage());
         }
