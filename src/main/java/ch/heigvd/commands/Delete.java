@@ -8,10 +8,9 @@ import picocli.CommandLine;
 public class Delete implements Callable<Integer> {
     @CommandLine.ParentCommand protected Root parent;
 
-    @CommandLine.Option(
-            names = {"-id"},
-            description = "id of task to delete",
-            required = true)
+    @CommandLine.Parameters(
+            index = "0",
+            description = "id of task to delete")
     protected int id;
 
     @Override
