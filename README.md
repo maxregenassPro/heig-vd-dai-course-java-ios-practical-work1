@@ -3,6 +3,31 @@
 ## Todo list
 The application stores the task list in a text file. This file is fully readable by all users.
 
+##  Install and setup
+
+### Prerequisites
+- Java 21 or higher
+- Maven 3.6 or higher
+
+### Clone
+```bash
+$ git clone https://github.com/maxregenassPro/heig-vd-dai-course-java-ios-practical-work1.git dai-todo-list
+$ cd dai-todo-list
+```
+
+### Build
+```bash
+$ mvn clean compile
+% mvn package
+```
+
+### Run
+```bash
+% java -jar target/java-ios-1.0-SNAPSHOT.jar [command] [options]
+```
+
+## Usage
+
 ### Example file
 
 You can find an example file on the root of this directory (`.todo.tlst`)
