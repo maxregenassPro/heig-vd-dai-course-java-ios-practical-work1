@@ -7,6 +7,7 @@ import picocli.CommandLine;
 	version = "1.0.0",
 	subcommands = {
 		Add.class,
+		List.class,
         Delete.class,
         Clear.class,
         Doing.class,
