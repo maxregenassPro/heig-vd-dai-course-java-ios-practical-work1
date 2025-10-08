@@ -108,7 +108,7 @@ public class TaskService {
 		return tasks;
 	}
 
-	private String formattedTasksString(List<Task> tasks) {
+	public String formattedTasksString(List<Task> tasks) {
 		// max lengths for alignment in file
 		// NOTE: do we really want to handle formatting? This doesn't really follow the POSIX / KISS principle in the end
 		int maxIdLen = 1;
