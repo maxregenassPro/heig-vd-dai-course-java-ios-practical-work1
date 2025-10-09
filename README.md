@@ -21,6 +21,12 @@ This CLI application provides a simple interface for managing personal tasks. It
 - Java 11 or higher
 - Maven 3.6 or higher
 
+### Clone
+```bash
+git clone https://github.com/maxregenassPro/heig-vd-dai-course-java-ios-practical-work1 todo-dai
+cd todo-dai
+```
+
 ### Build
 ```bash
 mvn clean compile
@@ -57,13 +63,19 @@ java -jar target/java-ios-1.0-SNAPSHOT.jar add "Task description" [options]
 **Examples:**
 ```bash
 # Simple task
-java -jar target/java-ios-1.0-SNAPSHOT.jar add "Complete project documentation"
+$ java -jar target/java-ios-1.0-SNAPSHOT.jar add "Complete project documentation"
+Created task with id 1.
+1 | Complete project documentation | 2025-10-09 |  |  | TODO
 
 # Task with due date and priority
-java -jar target/java-ios-1.0-SNAPSHOT.jar add "Review code changes" --due 2024-12-31 --priority HIGH
+$ java -jar target/java-ios-1.0-SNAPSHOT.jar add "Review code changes" --due 2025-10-12 --priority HIGH
+Created task with id 2.
+2 | Review code changes | 2025-10-09 | 2025-10-12 | HIGH | TODO
 
 # Global task
-java -jar target/java-ios-1.0-SNAPSHOT.jar add "Personal goal" --global
+$ java -jar target/java-ios-1.0-SNAPSHOT.jar add "Personal goal" --global
+Created task with id 1.
+1 | Personal goal | 2025-10-09 |  |  | TODO
 ```
 
 #### 2. List Tasks
@@ -80,16 +92,23 @@ java -jar target/java-ios-1.0-SNAPSHOT.jar list [options]
 **Filter Examples:**
 ```bash
 # Filter by status
-java -jar target/java-ios-1.0-SNAPSHOT.jar list --filter STATUS --filter-value TODO
+$ java -jar target/java-ios-1.0-SNAPSHOT.jar list --filter STATUS --filter-value TODO
+1 | Complete project documentation | 2025-10-09 |            |        | TODO
+3 | Finish POC                     | 2025-10-09 | 2025-10-14 | MEDIUM | TODO
 
 # Filter by priority
-java -jar target/java-ios-1.0-SNAPSHOT.jar list --filter PRIORITY --filter-value HIGH
+$ java -jar target/java-ios-1.0-SNAPSHOT.jar list --filter PRIORITY --filter-value HIGH
+2 | Review code changes | 2025-10-09 | 2025-10-12 | HIGH | DOING
 
 # Filter by due date
-java -jar target/java-ios-1.0-SNAPSHOT.jar list --filter DUEDATE_BEFORE --filter-value 2024-12-31
+$ java -jar target/java-ios-1.0-SNAPSHOT.jar list --filter DUEDATE_BEFORE --filter-value 2025-10-13
+2 | Review code changes | 2025-10-09 | 2025-10-12 | HIGH | DOING
 
 # Sort by priority (descending)
-java -jar target/java-ios-1.0-SNAPSHOT.jar list --sorter PRIORITY --direction DESC
+$ java -jar target/java-ios-1.0-SNAPSHOT.jar list --sorter PRIORITY --direction DESC
+1 | Complete project documentation | 2025-10-09 |            |        | TODO
+2 | Review code changes            | 2025-10-09 | 2025-10-12 | HIGH   | DOING
+3 | Finish POC                     | 2025-10-09 | 2025-10-14 | MEDIUM | TODO
 ```
 
 #### 3. Update Task Status
@@ -103,8 +122,13 @@ java -jar target/java-ios-1.0-SNAPSHOT.jar done <task_id>
 
 **Examples:**
 ```bash
-java -jar target/java-ios-1.0-SNAPSHOT.jar doing 5
-java -jar target/java-ios-1.0-SNAPSHOT.jar done 3
+$ java -jar target/java-ios-1.0-SNAPSHOT.jar doing 2
+Changed status from task with id 2 to DOING.
+2 | Review code changes | 2025-10-09 | 2025-10-12 | HIGH | DOING
+
+$ java -jar target/java-ios-1.0-SNAPSHOT.jar done 1
+Changed status from task with id 1 to DONE.
+1 | Complete project documentation | 2025-10-09 |  |  | DONE
 ```
 
 #### 4. Delete Task
@@ -114,12 +138,17 @@ java -jar target/java-ios-1.0-SNAPSHOT.jar delete <task_id>
 
 **Example:**
 ```bash
-java -jar target/java-ios-1.0-SNAPSHOT.jar delete 7
+$ java -jar target/java-ios-1.0-SNAPSHOT.jar delete 1
+Deleted task 1 successfully.
+1 | Complete project documentation | 2025-10-09 |  |  | DONE
 ```
 
 #### 5. Clear Completed Tasks
 ```bash
-java -jar target/java-ios-1.0-SNAPSHOT.jar clear
+$ java -jar target/java-ios-1.0-SNAPSHOT.jar clear
+Cleared 2 completed task(s):
+2 | Review code changes | 2025-10-09 | 2025-10-12 | HIGH   | DONE
+3 | Finish POC          | 2025-10-09 | 2025-10-14 | MEDIUM | DONE
 ```
 
 Removes all tasks with DONE status and shows what was cleared.
