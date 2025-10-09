@@ -222,3 +222,7 @@ src/main/java/ch/heigvd/
 
 ## Notes
 - Currently, we are displaying a message to the user on each action they do in addition to the resuted task(s) (e.g. when we add a task, we get a message that the task was created successfully + the row itself). We might want to just display the resulting task row and not the message to better comply with UNIX principles (better for piping into other programs).
+
+## Authors
+- [Maxime Regenass](https://github.com/maxregenassPro)
+- [Santiago Sugranes](https://github.com/santettebtw)
