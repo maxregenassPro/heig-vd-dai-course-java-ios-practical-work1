@@ -146,10 +146,6 @@ public class TaskService {
 	}
 
 	private void saveTasks(List<Task> tasks) {
-		if (tasks.isEmpty()) {
-			// TODO: clear file?
-			return;
-		}
 		TextFileWriter fw = new TextFileWriter();
 		fw.write(tasksFile.getPath(), formattedTasksString(tasks));
 	}
