@@ -28,9 +28,16 @@ cd todo-dai
 ```
 
 ### Build
+Make sure you have JDK 21 installed and set as your active Java version.
+
 ```bash
-mvn clean compile
-mvn package
+# you can build the project using the maven wrapper (recommended):
+$ ./mvnw clean compile
+$ ./mvnw package
+
+# alternatively, if you already have maven installed locally:
+$ mvn clean compile
+$ mvn package
 ```
 
 ### Run
