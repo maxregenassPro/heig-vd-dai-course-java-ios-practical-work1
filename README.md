@@ -16,14 +16,21 @@ $ cd dai-todo-list
 ```
 
 ### Build
+Make sure you have **JDK 21** installed and set as your active Java version.
+
 ```bash
+# you can build the project using the maven wrapper (recommended):
+$ ./mvnw clean compile
+$ ./mvnw package
+
+# alternatively, if you already have maven installed locally:
 $ mvn clean compile
-% mvn package
+$ mvn package
 ```
 
 ### Run
 ```bash
-% java -jar target/java-ios-1.0-SNAPSHOT.jar [command] [options]
+$ java -jar target/java-ios-1.0-SNAPSHOT.jar [command] [options]
 ```
 
 ## Usage
