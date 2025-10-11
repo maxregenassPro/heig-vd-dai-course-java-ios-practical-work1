@@ -13,7 +13,7 @@ public class TextFileWriter {
         try (FileWriter writer = new FileWriter(filename, StandardCharsets.UTF_8))
         {
             BufferedWriter bw = new BufferedWriter(writer);
-            bw.write("\n" + taches);
+            bw.write(taches);
 
             bw.flush();
             bw.close();
