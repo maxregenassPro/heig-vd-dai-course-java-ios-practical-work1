@@ -10,17 +10,17 @@ ind_name() {
 			echo "Ajout de Taches" ;;
 		"4")
 			echo "Lister" ;;
-		"5"|"6")
+		"5"|"6"|"7")
 			echo "Mise a Jour du Status" ;;
-		"7"|"8")
+		|"8"|"9")
 			echo "Filtrage et Triage" ;;
-		"9"|"10")
+		"10"|"11")
 			echo "Mode Global" ;;
-		"11")
-			echo "Effacer les Taches Accomplies" ;;
 		"12")
+			echo "Effacer les Taches Accomplies" ;;
+		"13")
 			echo "Affichage du Fichier" ;;
-		"13"|"14"|"15"|"16")
+		"14"|"15"|"16")
 			echo "UNIX Friendly" ;;
 	esac
 }
